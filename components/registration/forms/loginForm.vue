@@ -1,6 +1,6 @@
 <template>
   <div class="p-3">
-    <h2 class="text-lg-center">РЕГИСТРАЦИЯ</h2>
+    <h2 class="text-lg-center">АВТОРИЗАЦИЯ</h2>
     <b-form>
       <b-form-group
         label="Логин"
@@ -34,33 +34,12 @@
         </b-input-group>
       </b-form-group>
 
-      <b-form-group
-        label="Подтвердите пароль"
-        label-for="input-password-repeat"
-      >
-        <b-input-group>
-          <b-form-input
-            id="input-password-repeat"
-            v-model="form.passwordRepeat"
-            :type="showPasswordRepeat ? 'text' : 'password'"
-            required
-          ></b-form-input>
-          <b-input-group-append>
-            <b-button
-              @click="showPasswordRepeat = !showPasswordRepeat"
-            >
-              {{ showPasswordRepeat ? 'Скрыть' : 'Показать' }}
-            </b-button>
-          </b-input-group-append>
-        </b-input-group>
-      </b-form-group>
-
       <b-button
         class="float-right"
         type="submit"
         variant="primary"
       >
-        Зарегистрироваться
+        Войти
       </b-button>
     </b-form>
   </div>
@@ -68,16 +47,14 @@
 
 <script>
 export default {
-  name: 'signupForm',
+  name: 'loginForm',
   data() {
     return {
       form: {
         login: '',
-        password: '',
-        passwordRepeat: ''
+        password: ''
       },
-      showPassword: false,
-      showPasswordRepeat: false
+      showPassword: false
     }
   },
   methods: {

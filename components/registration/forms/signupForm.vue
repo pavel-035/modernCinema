@@ -9,6 +9,7 @@
         <b-form-input
           id="input-login"
           v-model="form.login"
+          v-validate="{ required: true, min: 3 }"
           required
         ></b-form-input>
       </b-form-group>
@@ -57,8 +58,8 @@
 
       <b-button
         class="float-right"
-        type="submit"
         variant="primary"
+        @click="validate()"
       >
         Зарегистрироваться
       </b-button>
@@ -67,6 +68,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'signupForm',
   data() {
@@ -74,13 +76,27 @@ export default {
       form: {
         login: '',
         password: '',
-        passwordRepeat: ''
+        passwordRepeat: '',
+        position: 'empty'
       },
       showPassword: false,
       showPasswordRepeat: false
     }
   },
   methods: {
+    ...mapActions('user', ['signup']),
+    validate() {
+      console.log('asd');
+      if(this.form.password === this.form.passwordRepeat) {
+        this.signup({
+          login: this.form.login,
+          password: this.form.password,
+          position: this.form.position
+        })
+      } else {
+        console.error('Пароли не совпадают');
+      }
+    }
   }
 }
 </script>

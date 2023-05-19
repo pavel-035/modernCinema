@@ -1,7 +1,7 @@
 <template>
   <div>
-<!--    <signup-form />-->
-    <login-form />
+    <signup-form />
+<!--    <login-form />-->
   </div>
 </template>
 

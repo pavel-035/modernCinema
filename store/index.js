@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import empty from "./models/user/empty";
+import user from "./models/user";
 
 Vue.use(Vuex);
 
 export default () => new Vuex.Store({
-  modules: { empty }
+  modules: { user }
 })

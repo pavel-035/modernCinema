@@ -11,6 +11,7 @@ import loginForm from "~/components/registration/forms/loginForm";
 
 export default {
   name: 'IndexPage',
+  layout: 'main',
   components: { signupForm, loginForm }
 }
 </script>

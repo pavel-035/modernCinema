@@ -2,7 +2,7 @@
   <header class="header">
     <b-row class="header_box p-3 m-0">
       <b-col class="p-0">
-        <a href="/" class="header_logo">logo</a>
+        <nuxt-link to="/" class="header_logo">logo</nuxt-link>
       </b-col>
       <b-col cols="7" class="p-0">
         <b-input

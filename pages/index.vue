@@ -7,7 +7,7 @@
       <b-col class="p-0">
         <b-button variant="outline-primary" v-b-modal.modal-calendar>Выбрать дату</b-button>
       </b-col>
-      <b-modal id="modal-calendar" size="sm" centered hide-footer hide-header>
+      <b-modal id="modal-calendar" size="sm" centered hide-header>
         <b-calendar v-model="selectData"/>
       </b-modal>
     </b-row>

@@ -1,12 +1,12 @@
 <template>
   <div class="movie">
     <b-tabs content-class="mt-3" fill>
-      <b-tab title="О фильме">
+      <b-tab title="О фильме" active>
         <div class="w-75 mx-auto py-3">
           <movie-card/>
         </div>
       </b-tab>
-      <b-tab title="Сеансы" active>
+      <b-tab title="Сеансы">
         <div class="w-75 mx-auto py-3">
           <movie-card
             :is-full-data="false"

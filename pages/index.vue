@@ -1,6 +1,6 @@
 <template>
   <div>
-    <signup-form />
+<!--    <signup-form />-->
 <!--    <login-form />-->
   </div>
 </template>

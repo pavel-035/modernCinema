@@ -6,6 +6,7 @@
       </b-col>
       <b-col cols="7" class="p-0">
         <b-input
+          v-if="$route.path === '/'"
           placeholder="Строка поиска(Найти фильм, персону, кинотеатр)"
         />
       </b-col>

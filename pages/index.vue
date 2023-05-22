@@ -1,7 +1,16 @@
 <template>
   <div class="w-75 mr-auto ml-auto mt-5">
-    <b-button variant="outline-primary">Выбрать Город</b-button>
-    <b-button variant="outline-primary">Выбрать дату</b-button>
+    <b-row>
+      <b-col cols="3 p-0 mr-2">
+        <b-form-select v-model="selectedCity" :options="['Пермь', 'Екб', 'Питер']"></b-form-select>
+      </b-col>
+      <b-col class="p-0">
+        <b-button variant="outline-primary" v-b-modal.modal-calendar>Выбрать дату</b-button>
+      </b-col>
+    </b-row>
+    <b-modal id="modal-calendar" size="sm" centered hide-footer hide-header>
+      <b-calendar v-model="selectData"/>
+    </b-modal>
     <div class="text-center mt-4">
       <h2>ТОП-10 ФИЛЬМОВ</h2>
       <span>ПО ОЦЕНКАМ НАШИХ ПОЛЬЗОВАТЕЛЕЙ</span>
@@ -76,17 +85,11 @@ export default {
           title: 'Название Фильма 4'
         }
       ],
-      slide: 0,
-      sliding: null
+      selectData: null,
+      selectedCity: null
     }
   },
   methods: {
-    onSlideStart(slide) {
-      this.sliding = true
-    },
-    onSlideEnd(slide) {
-      this.sliding = false
-    }
   }
 }
 </script>

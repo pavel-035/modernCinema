@@ -7,10 +7,10 @@
       <b-col class="p-0">
         <b-button variant="outline-primary" v-b-modal.modal-calendar>Выбрать дату</b-button>
       </b-col>
+      <b-modal id="modal-calendar" size="sm" centered hide-footer hide-header>
+        <b-calendar v-model="selectData"/>
+      </b-modal>
     </b-row>
-    <b-modal id="modal-calendar" size="sm" centered hide-footer hide-header>
-      <b-calendar v-model="selectData"/>
-    </b-modal>
     <div class="text-center mt-4">
       <h2>ТОП-10 ФИЛЬМОВ</h2>
       <span>ПО ОЦЕНКАМ НАШИХ ПОЛЬЗОВАТЕЛЕЙ</span>

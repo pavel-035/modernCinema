@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       form: {
-        name: 'Рома',
+        name: 'ага',
         surname: '',
         patronymic: '',
         email: '',

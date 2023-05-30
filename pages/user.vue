@@ -29,9 +29,6 @@
 export default {
   name: 'user',
   layout: 'main',
-  created() {
-    this.$router.push('profile')
-  },
   computed: {
     activePageTitle() {
       switch (this.$route.name) {

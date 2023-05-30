@@ -14,22 +14,14 @@
       ></b-form-rating>
     </b-col>
     <b-col cols="8" class="p-0">
-      <h2>Наименование</h2>
-      <h4>Оригинальное Наименование</h4>
-      <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti eius incidunt laboriosam nam nostrum odit perspiciatis quasi sequi voluptates. Aliquam asperiores at aut, corporis debitis deserunt expedita incidunt ipsam iusto laborum magni necessitatibus nemo nisi officiis perferendis qui quibusdam tempore vel. Accusantium assumenda beatae dolore eos modi molestias saepe sed sit? Deleniti dolor dolorem doloremque, dolores ea inventore magni minima modi nam officia possimus quis velit, voluptas. A accusamus adipisci amet blanditiis cumque deserunt dolorum eligendi est, excepturi facilis fuga fugiat impedit iusto laborum minus neque nesciunt nisi numquam placeat praesentium qui repudiandae sed similique sit veniam vero voluptatum.</p>
+      <h2>Имя Персоны</h2>
       <ul v-if="isFullData" class="p-0 m-o">
-        <li><b>Год производства:</b> 2020</li>
-        <li><b>Страна:</b> 2020</li>
-        <li><b>Жанр:</b> 2020</li>
-        <li><b>Режиссер:</b> 2020</li>
-        <li><b>Сценарий:</b> 2020</li>
-        <li><b>Продюсер:</b> 2020</li>
-        <li><b>Выпускающая компания:</b> 2020</li>
-        <li><b>Время:</b> 2020</li>
-        <li><b>Бюджет:</b> 2020</li>
-        <li><b>В ролях:</b> 2020</li>
-        <li><b>Рейтинг imDb:</b> 2020</li>
-        <li><b>Рейтинг сайта:</b> {{ rating }}</li>
+        <li><b>Годы жизни:</b> Дата рождения - Дата смерти</li>
+        <li><b>Карьера:</b>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet facilis perspiciatis quod repellendus ullam. Accusantium animi, autem commodi consectetur culpa dignissimos dolorem doloremque eius esse eveniet libero molestias porro, quaerat, quas quidem quisquam quos sapiente velit! Distinctio, dolor eaque eos fugit, incidunt iste laudantium maiores natus, perferendis quasi vel veritatis.
+          </p>
+        </li>
       </ul>
     </b-col>
   </b-row>

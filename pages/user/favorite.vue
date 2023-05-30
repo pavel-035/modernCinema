@@ -20,6 +20,12 @@
           >
             {{ item.title }}
           </b-card-title>
+          <b-button
+            variant="outline-primary"
+            class="w-100"
+          >
+            удалить
+          </b-button>
         </b-card>
       </NuxtLink>
     </div>

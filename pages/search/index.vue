@@ -59,7 +59,7 @@
           <NuxtLink
             v-for="(item, index) in movie"
             :key="index"
-            :to="`/movie/${index}`"
+            :to="`/cinema/${index}`"
             style="width: calc(100% / 4 - 15px)"
             class="text-decoration-none"
           >

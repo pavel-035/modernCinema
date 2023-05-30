@@ -28,7 +28,7 @@
           v-for="(item, index) in listData"
           :key="index"
         >
-          <b>{{ item.name }}:</b>{{ item.value }}
+          <b>{{ item.title }}:</b> {{ item.value }}
         </li>
       </ul>
     </b-col>

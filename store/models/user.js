@@ -25,9 +25,10 @@ const mutations = {
 }
 
 const actions = {
-  signup({ commit }, data) {
+  signup({ commit, dispatch }, data) {
     commit('setUserData', data);
     commit('setUserSignupStatus', true);
+    dispatch('login', data);
   },
   login({ commit, state }, data) {
     if(state.isSignup && data.login === state.data.login && data.password === state.data.password) {

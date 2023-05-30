@@ -15,7 +15,6 @@
           <b-form-input
             id="input-login"
             v-model="form.login"
-            v-validate="{ required: true, min: 3 }"
             required
           ></b-form-input>
         </b-form-group>

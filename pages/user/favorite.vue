@@ -1,14 +1,13 @@
 <template>
   <div>
+    favorite
   </div>
 </template>
 
 <script>
 export default {
-  name: 'user',
-  created() {
-    this.$router.push('/');
-  }
+  name: 'favorite'
+
 }
 </script>
 

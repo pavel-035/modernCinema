@@ -6,8 +6,9 @@
       </b-col>
       <b-col cols="7" class="p-0">
         <b-input
-          v-if="$route.path === '/'"
+          v-if="$route.path === '/' || $route.path === '/search'"
           placeholder="Строка поиска(Найти фильм, персону, кинотеатр)"
+          @keydown.enter="$router.push('/search')"
         />
       </b-col>
       <b-col class="header_nav text-lg-right p-0">

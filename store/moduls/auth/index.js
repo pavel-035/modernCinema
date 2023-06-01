@@ -24,19 +24,19 @@ const actions = {
           'Content-Type': 'application/json'
         }
       });
-      dispatch('authStatus');
+      dispatch('authStatus', true);
     } catch (err) {
       console.log(err);
     }
   },
   async logout({ dispatch }) {
     await this.$axios.$post(`/logout`);
-    dispatch('authStatus');
+    dispatch('authStatus', false);
   },
-  async authStatus({ commit }) {
+  async authStatus({ commit }, value) {
     const { authenticated } = await this.$axios.$get(`/auth_status`);
 
-    commit('setAuthStatus', authenticated);
+    commit('setAuthStatus', value);
   }
 }
 

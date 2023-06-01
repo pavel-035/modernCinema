@@ -23,10 +23,11 @@ const actions = {
           'Content-Type': 'application/json'
         }
       });
-
       await this.dispatch('auth/login', { login, password, userType });
+
+      return true;
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 }

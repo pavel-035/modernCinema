@@ -91,13 +91,18 @@ export default {
   },
   methods: {
     ...mapActions('buyer', ['signup']),
-    validate() {
+    async validate() {
       if(this.form.password === this.form.passwordRepeat) {
-        this.signup({
-          login: this.form.login,
-          password: this.form.password,
-          userType: 'buyer'
-        })
+        try {
+          await this.signup({
+            login: this.form.login,
+            password: this.form.password,
+            userType: 'buyer'
+          });
+          this.$emit('hidden');
+        } catch (err) {
+          console.log(err);
+        }
       } else {
         console.error('Пароли не совпадают');
       }

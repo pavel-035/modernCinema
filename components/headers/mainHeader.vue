@@ -27,10 +27,14 @@
       </b-col>
     </b-row>
     <b-modal id="modal-login" size="xl" centered hide-footer hide-header>
-      <login-form />
+      <login-form
+        @hidden="$bvModal.hide('modal-login')"
+      />
     </b-modal>
     <b-modal id="modal-signup" size="xl" centered hide-footer hide-header>
-      <signup-form />
+      <signup-form
+        @hidden="$bvModal.hide('modal-signup')"
+      />
     </b-modal>
   </header>
 </template>

@@ -10,7 +10,7 @@
 <script>
 import cinemaEditCard from "~/components/cinema/editCard";
 export default {
-  name: 'mycinema',
+  name: 'myCinemaList',
   components: { cinemaEditCard }
 }
 </script>

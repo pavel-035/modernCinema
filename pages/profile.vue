@@ -8,7 +8,7 @@
         style="column-gap: 20px"
       >
         <nuxt-link to="/profile/data">Мой аккаунт</nuxt-link>
-        <nuxt-link to="/profile/mycinema">Мои кинотеатры</nuxt-link>
+        <nuxt-link to="/profile/myCinemaList">Мои кинотеатры</nuxt-link>
         <nuxt-link to="report">Отчет</nuxt-link>
       </div>
       <b-row v-if="getUserRole === 'buyer'">
@@ -52,7 +52,7 @@ export default {
         case 'profile-data': {
           return 'Личный кабинет'
         }
-        case 'profile-mycinema': {
+        case 'profile-myCinemaList': {
           return 'Мои кинотеатры'
         }
         case 'profile-report': {

@@ -75,6 +75,7 @@
       </b-button>
       <b-button
         variant="outline-primary"
+        to="/profile/myCinema/1"
       >
         Посмотреть
       </b-button>

@@ -19,6 +19,12 @@
         <template v-else>
           <b-button
             variant="outline-primary"
+            to="/profile"
+          >
+            Личный кабинет
+          </b-button>
+          <b-button
+            variant="outline-primary"
             @click="logout()"
           >
             Выйти

@@ -71,8 +71,8 @@ export default {
   data() {
     return {
       form: {
-        login: '',
-        password: '',
+        login: 'agent',
+        password: 'password',
         userType: ''
       },
       showPassword: false,

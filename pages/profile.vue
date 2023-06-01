@@ -3,9 +3,19 @@
     <h2 class="text-center">{{ activePageTitle }}</h2>
     <b-row class="my-5">
       <b-col cols="3">
-        <b-list-group>
+        <div
+          v-if="getUserRole === 'cinemaAgent'"
+          class="d-flex"
+        >
+          <nuxt-link to="data">Мой аккаунт</nuxt-link>
+          <nuxt-link to="cinema">Мои кинотеатры</nuxt-link>
+          <nuxt-link to="report">Отчет</nuxt-link>
+        </div>
+        <b-list-group
+          v-if="getUserRole === 'buyer'"
+        >
           <b-list-group-item>
-            <nuxt-link to="profile">Мой аккаунт</nuxt-link>
+            <nuxt-link to="data">Мой аккаунт</nuxt-link>
           </b-list-group-item>
           <b-list-group-item>
             <nuxt-link to="favorite">Избранные фильмы</nuxt-link>
@@ -26,10 +36,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  name: 'user',
+  name: 'profile',
   layout: 'main',
   computed: {
+    ...mapGetters('auth', ['getUserRole']),
     activePageTitle() {
       switch (this.$route.name) {
         case 'profile-data': {

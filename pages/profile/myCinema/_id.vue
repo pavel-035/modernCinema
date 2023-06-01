@@ -13,7 +13,10 @@
         </li>
       </ul>
     </div>
-    <div class="d-flex my-3">
+    <div
+      v-if="!addRowMode"
+      class="d-flex my-3"
+    >
       <b-button
         variant="outline-primary"
         class="mr-2"
@@ -23,11 +26,26 @@
       </b-button>
       <b-button
         variant="outline-primary"
+        @click="addRowMode = true"
       >
         Схема Кинозала
       </b-button>
     </div>
+    <b-button
+      v-else
+      variant="outline-primary"
+      class="my-3"
+      @click="++countRow"
+    >
+      Добавить Сеанс
+    </b-button>
+    <cinema-row-edit-card
+      v-if="addRowMode"
+      v-for="item in countRow"
+      @delete="--countRow"
+    />
     <session-card
+      v-else
       v-for="item in countCard"
       @delete="--countCard"
     />
@@ -36,12 +54,15 @@
 
 <script>
 import sessionCard from '~/components/session/card';
+import cinemaRowEditCard from '~/components/cinema/rowEditCard';
 export default {
   name: 'myCinema',
-  components: { sessionCard },
+  components: { sessionCard, cinemaRowEditCard },
   data() {
     return {
-      countCard: 1
+      countCard: 1,
+      countRow: 1,
+      addRowMode: false
     }
   }
 }

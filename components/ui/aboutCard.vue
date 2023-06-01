@@ -39,7 +39,7 @@
             >
               <nuxt-link
                 v-if="item.type === 'link'"
-                :to="`/user/${el.id}`"
+                :to="`/person/${el.id}`"
                 class="mr-2"
               >
                 {{ el.name }}

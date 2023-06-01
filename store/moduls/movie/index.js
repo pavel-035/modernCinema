@@ -32,6 +32,13 @@ const actions = {
     } catch (err) {
       throw err
     }
+  },
+  async getPersonById({ state }, id) {
+    try {
+      return await this.$axios.$get(`https://imdb-api.com/en/API/Name/${state.apiKey}/${id}`);
+    } catch (err) {
+      throw err
+    }
   }
 }
 

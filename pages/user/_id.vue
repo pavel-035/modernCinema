@@ -18,7 +18,10 @@ import aboutCard from "@/components/ui/aboutCard";
 
 export default {
   layout: 'main',
-  components: { aboutCard }
+  components: { aboutCard },
+  created() {
+    console.log(this.$props);
+  }
 }
 </script>
 

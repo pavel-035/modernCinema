@@ -1,6 +1,6 @@
 <template>
-  <div>
-
+  <div class="w-75 mx-auto my-0">
+    
   </div>
 </template>
 

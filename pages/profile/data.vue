@@ -10,6 +10,7 @@
             id="input-web-name"
             v-model="form.cinimaChainName"
             required
+            :disabled="!editMode"
           ></b-form-input>
         </b-form-group>
 
@@ -21,6 +22,7 @@
             id="input-web-email"
             v-model="form.cinimaChainMail"
             required
+            :disabled="!editMode"
           ></b-form-input>
         </b-form-group>
 
@@ -32,6 +34,7 @@
             id="input-inn"
             v-model="form.INN"
             required
+            :disabled="!editMode"
           ></b-form-input>
         </b-form-group>
 
@@ -43,6 +46,7 @@
             id="input-ogrn"
             v-model="form.OGRN"
             required
+            :disabled="!editMode"
           ></b-form-input>
         </b-form-group>
 
@@ -54,6 +58,7 @@
             id="input-kpp"
             v-model="form.KPP"
             required
+            :disabled="!editMode"
           ></b-form-input>
         </b-form-group>
       </template>
@@ -64,7 +69,8 @@
         <b-form-input
           id="input-surname"
           v-model="form.surnameCA"
-          required
+          :required="isAgent"
+          :disabled="!editMode"
         ></b-form-input>
       </b-form-group>
 
@@ -75,7 +81,8 @@
         <b-form-input
           id="input-name"
           v-model="form.nameCA"
-          required
+          :required="isAgent"
+          :disabled="!editMode"
         ></b-form-input>
       </b-form-group>
 
@@ -86,7 +93,8 @@
         <b-form-input
           id="input-patronymicCA"
           v-model="form.patronymicCA"
-          required
+          :required="isAgent"
+          :disabled="!editMode"
         ></b-form-input>
       </b-form-group>
 
@@ -97,7 +105,8 @@
         <b-form-input
           id="input-email"
           v-model="form.mailCA"
-          required
+          :required="isAgent"
+          :disabled="!editMode"
         ></b-form-input>
       </b-form-group>
 
@@ -109,6 +118,7 @@
           id="input-login"
           v-model="form.loginCA"
           required
+          :disabled="!editMode"
         ></b-form-input>
       </b-form-group>
 
@@ -122,6 +132,7 @@
             v-model="form.passwordCA"
             :type="showPassword ? 'text' : 'password'"
             required
+            :disabled="!editMode"
           ></b-form-input>
           <b-input-group-append>
             <b-button
@@ -133,6 +144,28 @@
         </b-input-group>
       </b-form-group>
     </b-form>
+    <b-button
+      v-if="!editMode"
+      variant="primary"
+      @click="editMode = true"
+    >
+      Изменить
+    </b-button>
+    <b-row v-else class="p-0 m-0">
+      <b-button
+        variant="outline-primary"
+        class="mr-2"
+        @click="cancel()"
+      >
+        Отменить
+      </b-button>
+      <b-button
+        variant="primary"
+        @click="save()"
+      >
+        Сохранить
+      </b-button>
+    </b-row>
   </div>
 </template>
 
@@ -158,13 +191,27 @@ export default {
         passwordRepeat: 'password'
       },
       showPassword: false,
-      editMode: false
+      editMode: false,
+      saveDefaultData: null
     }
+  },
+  created() {
+    this.saveDefaultData = Object.assign({}, this.form);
   },
   computed: {
     ...mapGetters('auth', ['getUserRole']),
     isAgent() {
       return this.getUserRole === 'cinemaAgent';
+    }
+  },
+  methods: {
+    cancel() {
+      this.editMode = false;
+      this.form = Object.assign({}, this.saveDefaultData);
+    },
+    save() {
+      this.editMode = false;
+      this.saveDefaultData = Object.assign({}, this.form);
     }
   }
 }

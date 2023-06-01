@@ -90,9 +90,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions('user', ['signup']),
+    ...mapActions('buyer', ['signup']),
     validate() {
-      console.log('asd');
       if(this.form.password === this.form.passwordRepeat) {
         this.signup({
           login: this.form.login,

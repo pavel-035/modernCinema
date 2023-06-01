@@ -96,7 +96,7 @@ export default {
         this.signup({
           login: this.form.login,
           password: this.form.password,
-          position: this.form.position
+          userType: 'buyer'
         })
       } else {
         console.error('Пароли не совпадают');

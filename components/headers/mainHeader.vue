@@ -12,8 +12,18 @@
         />
       </b-col>
       <b-col class="header_nav text-lg-right p-0">
-        <b-button variant="outline-primary" v-b-modal.modal-login>Войти</b-button>
-        <b-button variant="outline-primary" v-b-modal.modal-signup>Зарегистрироваться</b-button>
+        <template v-if="!getUserEnteredStatus">
+          <b-button variant="outline-primary" v-b-modal.modal-login>Войти</b-button>
+          <b-button variant="outline-primary" v-b-modal.modal-signup>Зарегистрироваться</b-button>
+        </template>
+        <template v-else>
+          <b-button
+            variant="outline-primary"
+            @click="logout()"
+          >
+            Выйти
+          </b-button>
+        </template>
       </b-col>
     </b-row>
     <b-modal id="modal-login" size="xl" centered hide-footer hide-header>
@@ -28,10 +38,16 @@
 <script>
 import loginForm from "@/components/registration/forms/loginForm";
 import signupForm from "@/components/registration/forms/signupForm";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-  components: { signupForm, loginForm }
-
-
+  components: { signupForm, loginForm },
+  computed: {
+    ...mapGetters('auth', ['getUserEnteredStatus']),
+  },
+  methods: {
+    ...mapActions('auth', ['logout'])
+  }
 }
 </script>
 

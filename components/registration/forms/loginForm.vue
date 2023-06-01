@@ -47,8 +47,9 @@
 
         <b-button
           class="float-right mt-3"
-          type="submit"
           variant="primary"
+
+          @click="loginBuyer()"
         >
           Войти
         </b-button>
@@ -58,18 +59,31 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: 'loginForm',
   data() {
     return {
       form: {
         login: '',
-        password: ''
+        password: '',
+        userType: 'buyer'
       },
       showPassword: false
     }
   },
   methods: {
+    ...mapActions('auth', ['login']),
+    async loginBuyer() {
+      try {
+        await this.login(this.form);
+        this.$emit('hidden');
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
   }
 }
 </script>

@@ -25,8 +25,10 @@ const actions = {
         }
       });
       dispatch('authStatus', true);
+
+      return true;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   },
   async logout({ dispatch }) {

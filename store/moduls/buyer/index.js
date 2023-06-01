@@ -27,7 +27,7 @@ const actions = {
 
       return true;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 }

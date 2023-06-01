@@ -14,7 +14,7 @@
         >
           <b-form-input
             id="input-web-name"
-            v-model="form.web.name"
+            v-model="form.cinimaChainName"
             required
           ></b-form-input>
         </b-form-group>
@@ -25,18 +25,50 @@
         >
           <b-form-input
             id="input-web-email"
-            v-model="form.web.email"
+            v-model="form.cinimaChainMail"
             required
           ></b-form-input>
         </b-form-group>
 
+        <b-form-group
+          label="ИНН"
+          label-for="input-inn"
+        >
+          <b-form-input
+            id="input-inn"
+            v-model="form.INN"
+            required
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group
+          label="ОГРН"
+          label-for="input-ogrn"
+        >
+          <b-form-input
+            id="input-ogrn"
+            v-model="form.OGRN"
+            required
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group
+          label="КПП"
+          label-for="input-kpp"
+        >
+          <b-form-input
+            id="input-kpp"
+            v-model="form.KPP"
+            required
+          ></b-form-input>
+        </b-form-group>
         <b-form-group
           label="Фамилия"
           label-for="input-surname"
         >
           <b-form-input
             id="input-surname"
-            v-model="form.surname"
+            v-model="form.surnameCA"
             required
           ></b-form-input>
         </b-form-group>
@@ -47,18 +79,29 @@
         >
           <b-form-input
             id="input-name"
-            v-model="form.name"
+            v-model="form.nameCA"
             required
           ></b-form-input>
         </b-form-group>
 
         <b-form-group
           label="Отчество"
-          label-for="input-surname"
+          label-for="input-patronymicCA"
         >
           <b-form-input
-            id="input-surname"
-            v-model="form.surname"
+            id="input-patronymicCA"
+            v-model="form.patronymicCA"
+            required
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group
+          label="Ваш e-mail"
+          label-for="input-email"
+        >
+          <b-form-input
+            id="input-email"
+            v-model="form.mailCA"
             required
           ></b-form-input>
         </b-form-group>
@@ -69,7 +112,7 @@
         >
           <b-form-input
             id="input-login"
-            v-model="form.login"
+            v-model="form.loginCA"
             required
           ></b-form-input>
         </b-form-group>
@@ -81,7 +124,7 @@
           <b-input-group>
             <b-form-input
               id="input-password"
-              v-model="form.password"
+              v-model="form.passwordCA"
               :type="showPassword ? 'text' : 'password'"
               required
             ></b-form-input>
@@ -130,37 +173,39 @@
 
 <script>
 import { mapActions } from 'vuex';
+
 export default {
   name: 'signupCinemaForm',
   data() {
     return {
       form: {
-        web: {
-          name: '',
-          email: ''
-        },
-        name: '',
-        surname: '',
-        email: '',
-        login: '',
-        password: '',
-        passwordRepeat: '',
-        position: 'empty'
+        cinimaChainName: 'asdasdasd',
+        cinimaChainMail: 'asdasdasd',
+        INN: '1234567890',
+        OGRN: '1234567890123',
+        KPP: '123456789',
+        nameCA: 'Агент',
+        surnameCA: 'Агент',
+        patronymicCA: 'Агент',
+        mailCA: 'agentmail',
+        loginCA: 'agent',
+        passwordCA: 'password',
+        passwordRepeat: 'password'
       },
       showPassword: false,
       showPasswordRepeat: false
     }
   },
   methods: {
-    ...mapActions('user', ['signup']),
-    validate() {
-      console.log('asd');
-      if(this.form.password === this.form.passwordRepeat) {
-        this.signup({
-          login: this.form.login,
-          password: this.form.password,
-          position: this.form.position
-        })
+    ...mapActions('cinemaAgent', ['signup']),
+    async validate() {
+      if(this.form.passwordCA === this.form.passwordRepeat) {
+        try {
+          await this.signup(this.form);
+          this.$emit('hide');
+        } catch (err) {
+          console.log(err);
+        }
       } else {
         console.error('Пароли не совпадают');
       }

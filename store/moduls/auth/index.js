@@ -11,13 +11,9 @@ const mutations = {
 }
 
 const actions = {
-  async login({ state, dispatch }, { login, password, userType }) {
+  async login({ state, dispatch }, data) {
     try {
-      const jsonData = JSON.stringify({
-        loginBuyer: login,
-        passwordBuyer: password,
-        userType: userType
-      });
+      const jsonData = JSON.stringify(data);
 
       await this.$axios.$post(`/login`, jsonData, {
         headers: {

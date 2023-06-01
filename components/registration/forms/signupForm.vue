@@ -95,8 +95,8 @@ export default {
       if(this.form.password === this.form.passwordRepeat) {
         try {
           await this.signup({
-            login: this.form.login,
-            password: this.form.password,
+            loginCA: this.form.login,
+            passwordCA: this.form.password,
             userType: 'buyer'
           });
           this.$emit('hidden');

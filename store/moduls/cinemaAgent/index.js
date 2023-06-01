@@ -1,6 +1,9 @@
 const state = () => {
   return {
     data: {
+      position: '',
+      login: '',
+      password: ''
     }
   }
 }
@@ -8,19 +11,16 @@ const state = () => {
 const mutations = {}
 
 const actions = {
-  async signup({ commit, dispatch }, { login, password, userType }) {
+  async signup({ commit, dispatch }, data) {
     try {
-      const jsonData = JSON.stringify({
-        loginBuyer: login,
-        passwordBuyer: password
-      });
+      const jsonData = JSON.stringify(data);
 
-      await this.$axios.$post(`/buyer/register`, jsonData, {
+      await this.$axios.$post(`/cinemaAgent/register`, jsonData, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      await this.dispatch('auth/login', { login, password, userType });
+      await this.dispatch('auth/login', { login: data.loginCA, password: data.loginCA, userType: 'cinemaAgent' });
 
       return true;
     } catch (err) {

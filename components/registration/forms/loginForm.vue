@@ -45,6 +45,11 @@
           </b-input-group>
         </b-form-group>
 
+        <b-checkbox
+          v-model="isCinemaAgent"
+        >
+          представитель кинотетра
+        </b-checkbox>
         <b-button
           class="float-right mt-3"
           variant="primary"
@@ -68,15 +73,17 @@ export default {
       form: {
         login: '',
         password: '',
-        userType: 'buyer'
+        userType: ''
       },
-      showPassword: false
+      showPassword: false,
+      isCinemaAgent: false
     }
   },
   methods: {
     ...mapActions('auth', ['login']),
     async loginBuyer() {
       try {
+        this.form.userType = this.isCinemaAgent ? 'cinemaAgent' : 'buyer';
         await this.login(this.form);
         this.$emit('hidden');
       } catch (err) {

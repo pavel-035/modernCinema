@@ -3,12 +3,14 @@ import Vuex from "vuex";
 
 import auth from "./moduls/auth";
 import buyer from "./moduls/buyer";
+import cinemaAgent from "./moduls/cinemaAgent";
 
 Vue.use(Vuex);
 
 export default () => new Vuex.Store({
   modules: {
     'auth': auth,
-    'buyer': buyer
+    'buyer': buyer,
+    'cinemaAgent': cinemaAgent
   }
 })

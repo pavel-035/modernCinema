@@ -27,8 +27,29 @@
         <li
           v-for="(item, index) in listData"
           :key="index"
+          class="d-flex flex-wrap"
         >
-          <b>{{ item.title }}:</b> {{ item.value }}
+          <b>{{ item.title }}:&nbsp;</b>
+          <template
+            v-if="Array.isArray(item.value)"
+          >
+            <div
+              v-for="(el, index) in item.value"
+              :key="index"
+            >
+              <nuxt-link
+                v-if="item.type === 'link'"
+                :to="`user/${el.name}`"
+                class="mr-2"
+              >
+                {{ el.name }}
+              </nuxt-link>
+              <span v-else class="mr-2">{{ el.name }}</span>
+            </div>
+          </template>
+          <template v-else>
+            {{ item.value }}
+          </template>
         </li>
       </ul>
     </b-col>

@@ -12,7 +12,7 @@
       </b-modal>
     </b-row>
     <div class="text-center mt-4">
-      <h2>ТОП-10 ФИЛЬМОВ</h2>
+      <h2>ТОП-12 ФИЛЬМОВ</h2>
       <span>ПО ОЦЕНКАМ НАШИХ ПОЛЬЗОВАТЕЛЕЙ</span>
     </div>
     <div
@@ -20,15 +20,16 @@
       style="column-gap: 20px; row-gap: 20px"
     >
       <NuxtLink
-        v-for="(item, index) in movie"
+        v-for="(item, index) in getListTop12Movie"
         :key="index"
-        :to="`/movie/${index}`"
-        style="width: calc(100% / 4 - 15px)"
+        :to="`/movie/${item.id}`"
+        style="width: calc(100% / 4 - 15px);"
         class="text-decoration-none"
       >
         <b-card
-          :img-src="item.poster"
+          :img-src="item.image"
           text-variant="dark"
+          class="movie_card"
         >
           <b-card-title
             class="text-center"
@@ -44,6 +45,8 @@
 <script>
 import signupForm from "~/components/registration/forms/signupForm";
 import loginForm from "~/components/registration/forms/loginForm";
+
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: 'IndexPage',
@@ -97,7 +100,26 @@ export default {
       selectedCity: null
     }
   },
+  mounted() {
+    this.updateMovieList();
+  },
+  computed: {
+    ...mapGetters('movie', ['getListTop12Movie'])
+  },
   methods: {
+    ...mapActions('movie', ['updateMovieList'])
   }
 }
 </script>
+
+<style scoped>
+.movie_card::v-deep img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.movie_card::v-deep .card-title {
+  height: 100px;
+}
+
+</style>

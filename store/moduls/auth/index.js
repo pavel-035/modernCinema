@@ -19,26 +19,36 @@ const actions = {
     try {
       const jsonData = JSON.stringify(data);
 
+      // запрос на фзод в аккаунт
       await this.$axios.$post(`/login`, jsonData, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      commit('setCinemaAgent', data.userType);
-      dispatch('authStatus', true);
 
+      // если вход выполнен
+      // записать роль рользователя(cinemaAgent или buyer)
+      commit('setCinemaAgent', data.userType);
+      // изменить статус входа
+      dispatch('authStatus', true);
+      // вернуть true
       return true;
     } catch (err) {
+      // если вход не выполнен вернуть ошибку
       throw err;
     }
   },
   async logout({ dispatch }) {
+    // выполнить запрос на выход из аккаунта
     await this.$axios.$post(`/logout`);
-    dispatch('authStatus', false);
+    // изменить статус входа
+    dispatch('authStatus');
   },
   async authStatus({ commit }, value) {
+    // проверить статус входа в аккаунт
     const { authenticated } = await this.$axios.$get(`/auth_status`);
 
+    // записать в state результат
     commit('setAuthStatus', value);
   }
 }

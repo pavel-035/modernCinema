@@ -67,13 +67,13 @@ export default {
       }
     }
   },
-  created() {
-    this.login({
-      login: 'agent',
-      password: 'password',
-      userType: 'cinemaAgent'
-    })
-  },
+  // created() {
+  //   this.login({
+  //     login: 'agent',
+  //     password: 'password',
+  //     userType: 'cinemaAgent'
+  //   })
+  // },
   methods: {
     ...mapActions('auth', ['login']),
   }

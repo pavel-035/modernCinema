@@ -54,7 +54,7 @@
           class="float-right mt-3"
           variant="primary"
 
-          @click="loginBuyer()"
+          @click="onLogin()"
         >
           Войти
         </b-button>
@@ -81,12 +81,16 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['login']),
-    async loginBuyer() {
+    async onLogin() {
       try {
+        // если checkbox отмечен попробовать аторизоваться в качестве cinemaAgent
         this.form.userType = this.isCinemaAgent ? 'cinemaAgent' : 'buyer';
+        // вызвать метов авторизации
         await this.login(this.form);
+        // скрыть окно с формой авторизации
         this.$emit('hidden');
       } catch (err) {
+        // вывод в консоль ошибки
         console.log(err);
       }
     }

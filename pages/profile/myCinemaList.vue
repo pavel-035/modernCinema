@@ -1,17 +1,74 @@
 <template>
   <div>
+    <div>
+      <b-button
+        variant="outline-primary"
+        class="my-3"
+
+        @click="onAddCinema()"
+      >
+        добавить кинотеатр
+      </b-button>
+    </div>
     <cinema-edit-card
-      v-for="item in 5"
+      v-for="item in getCinemaList"
+      :key="item.id"
+      :data="item"
+
       class="mt-4"
+
+      @delete="onDeleteCinema"
+      @update="onUpdateCinema"
     />
   </div>
 </template>
 
 <script>
 import cinemaEditCard from "~/components/cinema/editCard";
+import {mapActions, mapGetters} from "vuex";
 export default {
   name: 'myCinemaList',
-  components: { cinemaEditCard }
+  components: { cinemaEditCard },
+  data() {
+    return {
+      newCinemaData: {}
+    }
+  },
+  computed: {
+    // получение списка кинотеатров из store
+    ...mapGetters('cinemaAgent', ['getCinemaList']),
+  },
+  created() {
+    this.loadCinemaList()
+  },
+  methods: {
+    ...mapActions('cinema', ['addCinema', 'deleteCinema', 'updateCinema']),
+    ...mapActions('cinema', ['loadCinemaList']),
+    // добавление кинотеатра
+    async onAddCinema() {
+      try {
+        await this.addCinema(this.newCinemaData);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    // обновление данных кинотеатра
+    async onUpdateCinema(data) {
+      try {
+        await this.updateCinema(data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    // удаление кинотеатра
+    async onDeleteCinema(id) {
+      try {
+        await this.deleteCinema(id);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
 }
 </script>
 

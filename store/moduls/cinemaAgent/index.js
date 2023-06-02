@@ -1,14 +1,16 @@
 const state = () => {
   return {
     data: {
-      position: '',
-      login: '',
-      password: ''
+      cinemaList: null
     }
   }
 }
 
-const mutations = {}
+const mutations = {
+  setListCinema(state, data) {
+    state.cinemaList = data
+  }
+}
 
 const actions = {
   async signup({ commit, dispatch }, data) {
@@ -26,10 +28,26 @@ const actions = {
     } catch (err) {
       throw err;
     }
-  }
+  },
+  async loadCinemaList({ commit }) {
+    try {
+      // запрос на получения спика кинотеатров агента
+      const data = await this.$axios.$get(`/cinemaAgent/cinema/${this.store.state.user_id}`);
+      // записать в state вернувшиеся данные
+      commit('setListCinema', data);
+
+      return true;
+    } catch (err) {
+      // вызвать ошибку если вернулась ошибка
+      throw err;
+    }
+  },
 }
 
 const getters = {
+  getCinemaList(state) {
+    return state.cinemaList
+  }
 }
 
 export default {

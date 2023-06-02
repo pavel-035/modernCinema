@@ -199,11 +199,15 @@ export default {
   methods: {
     ...mapActions('cinemaAgent', ['signup']),
     async validate() {
+      // если пароли совпадают
       if(this.form.passwordCA === this.form.passwordRepeat) {
         try {
+          // вызвать метод регистрации
           await this.signup(this.form);
+          // если регистрация прошла успешно скрыть окно регистрации
           this.$emit('hide');
         } catch (err) {
+          // если регистрация провалена ернуть вывести ошибку в консоль
           console.log(err);
         }
       } else {

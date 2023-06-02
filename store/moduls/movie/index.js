@@ -2,7 +2,8 @@ const state = () => {
   return {
     listTop12Movie: null,
     listMovie: null,
-    apiKey: 'k_3971y80e'
+    apiKey: 'k_xwo69vyq'
+    // apiKey: 'k_3971y80e'
   }
 }
 

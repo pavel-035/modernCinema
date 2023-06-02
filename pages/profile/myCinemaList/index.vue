@@ -5,33 +5,34 @@
         variant="outline-primary"
         class="my-3"
 
-        @click="onAddCinema()"
+        @click="++cinemaCount"
       >
         добавить кинотеатр
       </b-button>
     </div>
     <cinema-edit-card
-      v-for="item in getCinemaList"
+      v-for="item in cinemaCount"
       :key="item.id"
       :data="item"
 
       class="mt-4"
 
-      @delete="onDeleteCinema"
+      @delete="--cinemaCount"
       @update="onUpdateCinema"
     />
   </div>
 </template>
 
 <script>
-import cinemaEditCard from "~/components/cinema/editCard";
+import cinemaEditCard from "@/components/cinema/editCard";
 import {mapActions, mapGetters} from "vuex";
 export default {
   name: 'myCinemaList',
   components: { cinemaEditCard },
   data() {
     return {
-      newCinemaData: {}
+      newCinemaData: {},
+      cinemaCount: 0
     }
   },
   computed: {

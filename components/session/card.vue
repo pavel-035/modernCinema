@@ -70,14 +70,21 @@
           Изменить
         </b-button>
         <b-button
-          v-else
+          v-if="editMode"
+          variant="outline-primary"
+          @click="editMode = false"
+        >
+          Отменить
+        </b-button>
+        <b-button
+          v-if="editMode"
           variant="primary"
           @click="editMode = false"
         >
           Сохранить
         </b-button>
         <b-button
-          v-if=""
+          v-if="!editMode"
           variant="outline-primary"
           @click="$emit('delete')"
         >
@@ -99,7 +106,7 @@ export default {
   },
   data() {
     return {
-      editMode: false,
+      editMode: true,
       session: {
         film: '',
         date: '',

@@ -19,7 +19,7 @@ const mutations = {
 const actions = {
   async updateMovieList({ state, commit }, data) {
     try {
-      const res = await this.$axios.$get(`https://imdb-api.com/ru/API/Top250Movies/${state.apiKey}`);
+      // const res = await this.$axios.$get(`https://imdb-api.com/ru/API/Top250Movies/${state.apiKey}`);
 
       commit('setListMovie', res.items);
       commit('setListTop10Movie', res.items.slice(0, 12));

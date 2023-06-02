@@ -45,6 +45,9 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: 'profile',
   layout: 'main',
+  created() {
+    this.$router.push('/profile/data')
+  },
   computed: {
     ...mapGetters('auth', ['getUserRole']),
     activePageTitle() {

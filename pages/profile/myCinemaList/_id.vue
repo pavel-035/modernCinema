@@ -20,7 +20,7 @@
       <b-button
         variant="outline-primary"
         class="mr-2"
-        @click="++countCard"
+        @click="addSession()"
       >
         Добавить Сеанс
       </b-button>
@@ -35,19 +35,21 @@
       v-else
       variant="outline-primary"
       class="my-3"
-      @click="++countRow"
+      @click="addSession()"
     >
       Добавить Сеанс
     </b-button>
     <cinema-row-edit-card
       v-if="addRowMode"
       v-for="item in countRow"
+
       @delete="--countRow"
     />
     <session-card
       v-else
-      v-for="item in countCard"
-      @delete="--countCard"
+      v-for="(item, index) in list"
+      :key="item"
+      @delete="delteSession()"
     />
   </div>
 </template>
@@ -56,13 +58,27 @@
 import sessionCard from '~/components/session/card';
 import cinemaRowEditCard from '~/components/cinema/rowEditCard';
 export default {
-  name: 'myCinema',
+  name: 'myCinemaList',
   components: { sessionCard, cinemaRowEditCard },
   data() {
     return {
-      countCard: 1,
       countRow: 1,
-      addRowMode: false
+      addRowMode: false,
+      dataList: []
+    }
+  },
+  computed: {
+    list() {
+      return this.dataList.reverse();
+    }
+  },
+  methods: {
+    addSession() {
+      this.dataList.push(Math.random());
+    },
+    delteSession() {
+      this.dataList.splice(0, 1)
+      console.log('delte');
     }
   }
 }

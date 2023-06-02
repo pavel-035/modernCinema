@@ -4,34 +4,35 @@
       <b-col>
         <div class="mb-3">
           <div class="mb-1">Фильм</div>
-          <b>Название фильма</b>
+          <b>Goodfellas</b>
         </div>
         <div class="mb-3">
           <div class="mb-1">Кинотеатр</div>
-          <b>Наименование кинотеатра</b>
+          <b>Тестовый кинотеатр</b>
         </div>
         <div class="mb-3">
           <div class="mb-1">Дата сеанса</div>
-          <b>Дата и время сеанса</b>
+          <b>4 июня 2023г.</b>
         </div>
         <div class="mb-3">
           <div class="mb-1">Зал</div>
-          <b>Номер зала</b>
+          <b>7</b>
         </div>
         <div class="mb-3">
           <div class="mb-1">Ряд и место</div>
-          <b>Ряд и места</b>
+          <b>5 ряд места 6, 7, 8, 9</b>
         </div>
         <div class="mb-3">
           <div class="mb-1">Цена</div>
-          <b>Суммарная стоимость</b>
+          <b>1800руб.</b>
         </div>
       </b-col>
       <b-col>
         <div class="mb-3">
           <div class="mb-1">Номер заказа</div>
-          <b>Номер заказа</b>
+          <b>1789</b>
         </div>
+        <img src="http://qrcoder.ru/code/?id%3A+1789&4&0" alt="" style="width: 100%">
       </b-col>
     </b-row>
   </b-card>

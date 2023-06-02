@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       dataMovie: null,
-      selectedCity: null,
+      selectedCity: 'Пермь',
       selectData: null
     }
   },

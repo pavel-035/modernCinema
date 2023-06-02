@@ -50,7 +50,7 @@
     </b-modal>
     <b-modal id="modal-by" centered hide-footer hide-header>
       <div  class="text-center" >
-        Билет куплен
+        Билет куплен, Бидет находтся в разделе "Мои билеты"
       </div>
     </b-modal>
   </div>

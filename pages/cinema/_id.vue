@@ -21,8 +21,6 @@
             <b-calendar v-model="selectData"/>
           </b-modal>
           <cinema-card />
-          <cinema-card />
-          <cinema-card />
         </div>
       </b-tab>
     </b-tabs>

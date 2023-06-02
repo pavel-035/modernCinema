@@ -33,8 +33,6 @@
             </b-modal>
           </b-row>
           <cinema-card />
-          <cinema-card />
-          <cinema-card />
         </div>
       </b-tab>
     </b-tabs>
@@ -71,7 +69,7 @@ export default {
           { title: 'Время', value: data.runtimeStr },
           { title: 'В ролях', value: data.starList, type: 'link' },
           { title: 'Рейтинг imDb', value: data.imDbRating },
-          { title: 'Рейтинг сайта', value: 0 },
+          { title: 'Рейтинг сайта', value: 4.5 },
         ]
       }
     } catch (err) {

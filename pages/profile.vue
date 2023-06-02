@@ -15,16 +15,16 @@
         <b-col cols="3">
           <b-list-group>
             <b-list-group-item>
-              <nuxt-link to="data">Мой аккаунт</nuxt-link>
+              <nuxt-link to="/profile/data">Мой аккаунт</nuxt-link>
             </b-list-group-item>
             <b-list-group-item>
-              <nuxt-link to="favorite">Избранные фильмы</nuxt-link>
+              <nuxt-link to="/profile/favorite">Избранные фильмы</nuxt-link>
             </b-list-group-item>
             <b-list-group-item>
-              <nuxt-link to="favorite">Избранные персоны</nuxt-link>
+              <nuxt-link to="/profile/favorite">Избранные персоны</nuxt-link>
             </b-list-group-item>
             <b-list-group-item>
-              <nuxt-link to="tickets">Мои билеты</nuxt-link>
+              <nuxt-link to="/profile/tickets">Мои билеты</nuxt-link>
             </b-list-group-item>
           </b-list-group>
         </b-col>

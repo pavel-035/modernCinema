@@ -7,14 +7,28 @@
           :src="image"
         ></b-img>
       </div>
-      <b-form-rating
-        v-if="isFullData"
-        v-model="rating"
-        class="mt-2"
-        inline
-        show-value
-        variant="warning"
-      ></b-form-rating>
+      <div class="d-flex mt-2">
+        <b-form-rating
+          v-if="isFullData"
+          v-model="$store.state.stars"
+          class="mr-3"
+          inline
+          show-value
+          variant="warning"
+        ></b-form-rating>
+        <div
+          @click="like()"
+          class="d-flex justify-content-center align-items-center"
+          style="width: 20px; font-size: 0; cursor: pointer"
+        >
+          <img v-if="$store.state.isLike" :src="require(`~/static/heart_red.svg`)"
+            style="width: 140%"
+          />
+          <img v-else :src="require(`~/static/heart.svg`)"
+               style="width: 100%"
+          />
+        </div>
+      </div>
     </b-col>
     <b-col cols="8" class="p-0">
       <h2>{{ title }}</h2>
@@ -76,7 +90,12 @@ export default {
   },
   data() {
     return {
-      rating: 4
+    }
+  },
+  methods: {
+    like() {
+      console.log('islike');
+      this.$store.state.isLike = true
     }
   }
 }

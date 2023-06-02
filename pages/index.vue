@@ -20,7 +20,7 @@
       style="column-gap: 20px; row-gap: 20px"
     >
       <NuxtLink
-        v-for="(item, index) in getListTop12Movie"
+        v-for="(item, index) in movieList"
         :key="index"
         :to="`/movie/${item.id}`"
         style="width: calc(100% / 4 - 15px);"
@@ -60,12 +60,28 @@ export default {
   },
   mounted() {
     this.updateMovieList();
+    console.log(this.getListTop12Movie);
   },
   computed: {
-    ...mapGetters('movie', ['getListTop12Movie'])
+    ...mapGetters('movie', ['getListTop12Movie']),
+    movieList() {
+      if(this.getListTop12Movie) {
+        if(this.selectedCity && !this.selectData) {
+          return this.getListTop12Movie.slice(12, 17)
+        }
+        if(this.selectedCity && this.selectData) {
+          return this.getListTop12Movie.slice(15, 17)
+        }
+        if(!this.selectedCity && !this.selectData) {
+          return this.getListTop12Movie.slice(0, 12)
+        }
+      }
+    }
   },
   methods: {
-    ...mapActions('movie', ['updateMovieList'])
+    ...mapActions('movie', ['updateMovieList', 'getMovieByCity']),
+    filterMovie() {
+    }
   }
 }
 </script>
